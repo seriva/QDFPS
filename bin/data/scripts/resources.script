@@ -1,0 +1,5 @@
+{load base textures, note that the sequence in which they are loaded is important}
+loadtexture(0, "textures/base/font.tga");
+loadtexture(0, "textures/base/crosshair.tga");
+
+

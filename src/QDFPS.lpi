@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="QDFPS"/>
+      <UseAppBundle Value="False"/>
+      <ResourceType Value="res"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <Units Count="43">
+      <Unit0>
+        <Filename Value="QDFPS.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="QDFPS"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="Console.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Console"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="Editing.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Editing"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="Frustum.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Frustum"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="Log.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Log"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="Main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Main"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="Map.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Map"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="Physics.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Physics"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="Renderer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Renderer"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="Skybox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Skybox"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="Textures.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Textures"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\libs\opengl\dglOpenGL.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="dglOpenGL"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="Scripting.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Scripting"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="Font.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Font"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\libs\sdl\jedi.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\libs\sdl\SDL.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\libs\sdl\sdl2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SDL2"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\libs\sdl\sdlblendmode.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\libs\sdl\sdlerror.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\libs\sdl\sdlevents.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\libs\sdl\sdlgesture.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\libs\sdl\sdljoystick.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\libs\sdl\sdlkeyboard.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\libs\sdl\sdlloadso.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\libs\sdl\sdlmouse.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\libs\sdl\sdlmutex.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\libs\sdl\sdlpixels.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="..\libs\sdl\sdlplatform.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="..\libs\sdl\sdlpower.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\libs\sdl\sdlrect.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\libs\sdl\sdlrenderer.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="..\libs\sdl\sdlrwops.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="..\libs\sdl\sdlscancode.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\libs\sdl\sdlshape.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\libs\sdl\sdlsurface.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\libs\sdl\sdlthread.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\libs\sdl\sdltimer.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="..\libs\sdl\sdltouch.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="..\libs\sdl\sdltype.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="..\libs\sdl\sdlversion.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="..\libs\sdl\sdlvideo.inc"/>
+        <IsPartOfProject Value="True"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="Common.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Common"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="Lighting.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Lighting"/>
+      </Unit42>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="..\bin\QDFPS"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir);..\libs\imaging;..\libs\sdl"/>
+      <OtherUnitFiles Value="..\libs\opengl;..\libs\imaging;..\libs\imaging\Extensions;..\libs\imaging\JpegLib;..\libs\sdl"/>
+      <UnitOutputDirectory Value="..\build"/>
+    </SearchPaths>
+    <Other>
+      <CompilerMessages>
+        <MsgFileName Value=""/>
+      </CompilerMessages>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="4">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="Exception"/>
+      </Item4>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

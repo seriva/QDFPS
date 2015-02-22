@@ -1,0 +1,20 @@
+{screen settings}
+scr_width=800;
+scr_height=600;
+scr_bpp=32;
+scr_fullscreen=0;
+
+{render settings}
+r_fov=45.0;
+r_near=0.1;
+r_far=100;
+
+{key input (ascii key codes)}
+i_forward=119;
+i_backward=115;
+i_left=97;
+i_right=100;
+
+{mouse input}
+m_inverse=0;
+m_sensitivity=4;
