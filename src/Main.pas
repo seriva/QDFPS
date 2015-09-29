@@ -66,7 +66,7 @@ const
   BASE_SETTINGS  = 'scripts/settings.script';
   BASE_RESOURCES = 'scripts/resources.script';
 
-function FpsTimer( interval : UInt32; param : Pointer ) : UInt32;
+function FpsTimer(interval: UInt32; param: Pointer): UInt32; cdecl;
 begin;
   fps := fpscount;
   SDL_SetWindowTitle(window, PAnsiChar( AnsiString(WINDOW_CAPTION) + ' - ['+IntToStr(Round(fps))+' FPS]'));

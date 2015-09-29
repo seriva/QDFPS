@@ -5,21 +5,30 @@ unit SDL2;
   Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
 
   Pascal-Header-Conversion
-  Copyright (C) 2012/13 Tim Blume aka End/EV1313
+  Copyright (C) 2012-2014 Tim Blume aka End/EV1313
 
   SDL.pas is based on the files:
   "sdl.h",
+  "sdl_audio.h",
   "sdl_blendmode.h",
+  "sdl_clipboard.h",
+  "sdl_cpuinfo.h",
   "sdl_events.h",
   "sdl_error.h",
+  "sdl_filesystem.h",
+  "sdl_gamecontroller.h",
   "sdl_gesture.h",
+  "sdl_haptic.h",
+  "sdl_hints.h",
   "sdl_joystick.h",
   "sdl_keyboard.h",
   "sdl_keycode.h",
-  "sdl_loadso.h"
+  "sdl_loadso.h",
+  "sdl_log.h",
   "sdl_pixels.h",
   "sdl_power.h",
   "sdl_main.h",
+  "sdl_messagebox.h",
   "sdl_mouse.h",
   "sdl_mutex.h",
   "sdl_rect.h",
@@ -29,12 +38,14 @@ unit SDL2;
   "sdl_shape.h",
   "sdl_stdinc.h",
   "sdl_surface.h",
+  "sdl_system.h",
+  "sdl_syswm.h",
   "sdl_thread.h",
   "sdl_timer.h",
   "sdl_touch.h",
   "sdl_version.h",
   "sdl_video.h",
-  "sdltype_s.h"
+  "sdl_types.h"
 
   I will not translate:
   "sdl_opengl.h",
@@ -77,6 +88,14 @@ unit SDL2;
 {
   Changelog:
   ----------
+  v.1.80-stable; 09.10.2014: added sdl_cpuinfo.h and sdl_clipboard.h
+  v.1.74-stable; 10.11.2013: added sdl_gamecontroller.h
+  v.1.73-stable; 08.11.2013: added sdl_hints.h and some keystate helpers
+                             thx to Cybermonkey!
+  v.1.72-stable; 23.09.2013: fixed bug with procedures without parameters
+                             (they must have brakets)
+  v.1.70-stable; 17.09.2013: added "sdl_messagebox.h" and "sdl_haptic.h"
+  v.1.63-stable; 16.09.2013: added libs sdl2_image and sdl2_ttf and added sdl_audio.h
   v.1.62-stable; 03.09.2013: fixed.
   v.1.61-stable; 02.09.2013: now it should REALLY work with Mac...
   v.1.60-stable; 01.09.2013: now it should work with Delphi XE4 for Windows and
@@ -120,16 +139,18 @@ interface
       X,
       XLib;
   {$ENDIF}
+  
+  {$IFDEF DARWIN}
+    uses
+      X,
+      XLib,
+      CocoaAll;
+  {$ENDIF}
 
 const
 
   {$IFDEF WINDOWS}
-    {$IFDEF WIN32}
-      SDL_LibName = 'SDL2.dll';
-	  {$ENDIF}
-	  {$IFDEF WIN64}
-	    SDL_LibName = 'SDL2.dll';
-   	{$ENDIF}
+    SDL_LibName = 'SDL2.dll';
   {$ENDIF}
 
   {$IFDEF UNIX}
@@ -162,24 +183,36 @@ const
 {$I sdlpixels.inc}
 {$I sdlrect.inc}
 {$I sdlrwops.inc}
+{$I sdlaudio.inc}
 {$I sdlblendmode.inc}
 {$I sdlsurface.inc}
 {$I sdlshape.inc}
 {$I sdlvideo.inc}
+{$I sdlhints.inc}
+{$I sdlloadso.inc}
+{$I sdlmessagebox.inc}
 {$I sdlrenderer.inc}
 {$I sdlscancode.inc}
 {$I sdlkeyboard.inc}
 {$I sdlmouse.inc}
 {$I sdljoystick.inc}
+{$I sdlgamecontroller.inc}
+{$I sdlhaptic.inc}
 {$I sdltouch.inc}
 {$I sdlgesture.inc}
+{$I sdlsyswm.inc}
 {$I sdlevents.inc}
+{$I sdlclipboard.inc}
+{$I sdlcpuinfo.inc}
+{$I sdlfilesystem.inc}
+{$I sdllog.inc}
+{$I sdlsystem.inc}
 {$I sdl.inc}
 
 implementation
 
 //from "sdl_version.h"
-procedure SDL_VERSION(x: PSDL_Version);
+procedure SDL_VERSION(Out x: TSDL_Version);
 begin
   x.major := SDL_MAJOR_VERSION;
   x.minor := SDL_MINOR_VERSION;
@@ -201,6 +234,12 @@ end;
 function SDL_VERSION_ATLEAST(X,Y,Z: Cardinal): Boolean;
 begin
   Result := SDL_COMPILEDVERSION >= SDL_VERSIONNUM(X,Y,Z);
+end;
+
+//from "sdl_mouse.h"
+function SDL_Button(button: SInt32): SInt32;
+begin
+  Result := 1 shl (button - 1); 
 end;
 
 {$IFDEF WINDOWS}
@@ -256,6 +295,48 @@ begin
   Result := ctx^.close(ctx);
 end;
 
+//from "sdl_audio.h"
+
+function SDL_LoadWAV(_file: PAnsiChar; spec: PSDL_AudioSpec; audio_buf: PPUInt8; audio_len: PUInt32): PSDL_AudioSpec;
+begin
+  Result := SDL_LoadWAV_RW(SDL_RWFromFile(_file, 'rb'), 1, spec, audio_buf, audio_len);
+end;
+  
+function SDL_AUDIO_BITSIZE(x: Cardinal): Cardinal;
+begin
+  Result := x and SDL_AUDIO_MASK_BITSIZE;
+end;
+
+function SDL_AUDIO_ISFLOAT(x: Cardinal): Cardinal;
+begin
+  Result := x and SDL_AUDIO_MASK_DATATYPE;
+end;
+
+function SDL_AUDIO_ISBIGENDIAN(x: Cardinal): Cardinal;
+begin
+  Result := x and SDL_AUDIO_MASK_ENDIAN;
+end;
+
+function SDL_AUDIO_ISSIGNED(x: Cardinal): Cardinal;
+begin
+  Result := x and SDL_AUDIO_MASK_SIGNED;
+end;
+
+function SDL_AUDIO_ISINT(x: Cardinal): Cardinal;
+begin
+  Result := not SDL_AUDIO_ISFLOAT(x);
+end;
+
+function SDL_AUDIO_ISLITTLEENDIAN(x: Cardinal): Cardinal;
+begin
+  Result := not SDL_AUDIO_ISLITTLEENDIAN(x);
+end;
+
+function SDL_AUDIO_ISUNSIGNED(x: Cardinal): Cardinal;
+begin
+  Result := not SDL_AUDIO_ISSIGNED(x);
+end;
+
 //from "sdl_pixels.h"
 
 function SDL_PIXELFLAG(X: Cardinal): Boolean;
@@ -295,6 +376,19 @@ begin
   Result := SDL_LoadBMP_RW(SDL_RWFromFile(_file, 'rb'), 1);
 end;
 
+function SDL_SaveBMP(Const surface:PSDL_Surface; Const filename:AnsiString):sInt32;
+begin
+   Result := SDL_SaveBMP_RW(surface, SDL_RWFromFile(PAnsiChar(filename), 'wb'), 1)
+end;
+
+{**
+ *  Evaluates to true if the surface needs to be locked before access.
+ *}
+function SDL_MUSTLOCK(Const S:PSDL_Surface):Boolean;
+begin
+  Result := ((S^.flags and SDL_RLEACCEL) <> 0)
+end;
+
 //from "sdl_video.h"
 function SDL_WindowPos_IsUndefined(X: Variant): Variant;
 begin
@@ -311,6 +405,21 @@ end;
 function SDL_GetEventState(type_: UInt32): UInt8;
 begin
   Result := SDL_EventState(type_, SDL_QUERY);
+end;
+
+// from "sdl_timer.h"
+function SDL_TICKS_PASSED(Const A, B:UInt32):Boolean;
+begin
+   Result := ((Int64(B) - Int64(A)) <= 0)
+end;
+
+// from "sdl_gamecontroller.h"
+  {**
+   *  Load a set of mappings from a file, filtered by the current SDL_GetPlatform()
+   *}
+function SDL_GameControllerAddMappingsFromFile(Const FilePath:PAnsiChar):SInt32;
+begin
+  Result := SDL_GameControllerAddMappingsFromRW(SDL_RWFromFile(FilePath, 'rb'), 1)
 end;
 
 end.
