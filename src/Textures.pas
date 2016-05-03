@@ -3,8 +3,8 @@ unit Textures;
 interface
 
 uses
-  Windows,
   SysUtils,
+  Classes,
   Log,
   Scripting,
   dglOpenGL;
@@ -143,35 +143,22 @@ begin
   glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, mode );
 end;
 
-procedure CreateTexture(const width, height, channels, textype, texid : integer; const data : pointer);
-begin
-  glGenTextures(1, @tex_data[textype][texid].tex);
-  glBindTexture(GL_TEXTURE_2D, tex_data[textype][texid].tex  );
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-  if channels = 4 then
-    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, Width, Height, GL_RGBA, GL_UNSIGNED_BYTE, data)
-  else
-    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, Width, Height, GL_RGB, GL_UNSIGNED_BYTE, data);
-end;
-
 procedure LoadTexture(const params : TParams);
 var
-  path : String;
-  iDDSD          : TDDSurfaceDesc2;
-  iFileCode      : array[0..3] of AnsiChar;
-  iBufferSize    : integer;
-  iReadBufferSize: integer;
-  iPFile         : THandle;
-  iReadBytes     : Longword;
-  iDDSData       : TDDSData;
-  iBlockSize     : Integer;
-  iHeight        : Integer;
-  iWidth         : Integer;
-  iOffset        : Integer;
-  iSize          : Integer;
-  iI             : Integer;
-  texid          : Integer;
+  path           : String;
+  ddsd           : TDDSurfaceDesc2;
+  filecode       : array[0..3] of AnsiChar;
+  buffersize     : integer;
+  readbuffersize : integer;
+  ddsdata        : TDDSData;
+  blocksize      : integer;
+  height         : integer;
+  width          : integer;
+  offset         : integer;
+  size           : integer;
+  i              : integer;
+  texid          : integer;
+  ddsfile        : TMemoryStream;
 
 begin
   path :=  basedatadir + params[1].str;
@@ -188,33 +175,32 @@ begin
     SetLength(tex_data[params[0].int], texid+1);
     tex_data[params[0].int][texid].path := params[1].str;
 
-     //load the texture
-    iPFile := CreateFile(PChar(AnsiString(path)), GENERIC_READ, FILE_SHARE_READ, nil, OPEN_EXISTING, 0, 0);
-    if (iPFile = INVALID_HANDLE_VALUE) then
-      Raise Exception.Create('Failed to load texture ' + path);
+    //load the texture
+    ddsfile := TMemoryStream.Create();
+    ddsfile.LoadFromFile(path);
 
     //verify if it is a true DDS file
-    ReadFile( iPFile, iFileCode, 4, iReadBytes, nil);
-    if (iFileCode[0] + iFileCode[1] + iFileCode[2] <> 'DDS') then
+    ddsfile.read(filecode, 4);
+    if (filecode[0] + filecode[1] + filecode[2] <> 'DDS') then
       Raise Exception.Create('File ' + path + ' is not a valid DDS file.');
 
     //read surface descriptor
-    ReadFile( iPFile, iDDSD, sizeof(iDDSD), iReadBytes, nil );
-    case iDDSD.ddpfPixelFormat.dwFourCC of
+    ddsfile.read(ddsd, sizeof(ddsd));
+    case ddsd.ddpfPixelFormat.dwFourCC of
     FOURCC_DXT1 : begin
                     //DXT1's compression ratio is 8:1
-                    iDDSData.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
-                    iDDSData.Factor := 2;
+                    ddsdata.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+                    ddsdata.Factor := 2;
                   end;
     FOURCC_DXT3 : begin
                     //DXT3's compression ratio is 4:1
-                    iDDSData.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
-                    iDDSData.Factor := 4;
+                    ddsdata.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+                    ddsdata.Factor := 4;
                   end;
     FOURCC_DXT5 : begin
                     //DXT5's compression ratio is 4:1
-                    iDDSData.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
-                    iDDSData.Factor := 4;
+                    ddsdata.OutputFormat := GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+                    ddsdata.Factor := 4;
                   end;
     else          begin
                     //Not compressed. Oh shit, didn't implement that!
@@ -223,65 +209,64 @@ begin
     end;
 
     //how big will the buffer need to be to load all of the pixel data including mip-maps?
-    if( iDDSD.dwLinearSize = 0 ) then
+    if( ddsd.dwLinearSize = 0 ) then
       Raise Exception.Create('File ' + path + ' dwLinearSize is 0.');
 
     //set the buffer size
-    if( iDDSD.dwMipMapCount > 1 ) then
-      iBufferSize := iDDSD.dwLinearSize * iDDSData.Factor
+    if( ddsd.dwMipMapCount > 1 ) then
+      buffersize := ddsd.dwLinearSize * ddsdata.Factor
     else
-      iBufferSize := iDDSD.dwLinearSize;
+      buffersize := ddsd.dwLinearSize;
 
     //read the buffer data
-    iReadBufferSize := iBufferSize * sizeof(Byte);
-    setLength(iDDSData.Data, iReadBufferSize);
-    if Not(ReadFile( iPFile, iDDSData.Data[0] , iReadBufferSize, iReadBytes, nil)) then
-      Raise Exception.Create('Failed to read image data from file ' + path);
-    CloseHandle(iPFile);
+    readbuffersize := buffersize * sizeof(Byte);
+    setLength(ddsdata.Data, readbuffersize);
+    ddsfile.read(ddsdata.Data[0], readbuffersize);
+    FreeAndNil(ddsfile);
 
     //more output info }
-    iDDSData.Width      := iDDSD.dwWidth;
-    iDDSData.Height     := iDDSD.dwHeight;
-    iDDSData.NumMipMaps := iDDSD.dwMipMapCount;
+    ddsdata.Width      := ddsd.dwWidth;
+    ddsdata.Height     := ddsd.dwHeight;
+    ddsdata.NumMipMaps := ddsd.dwMipMapCount;
 
     //do we have a fourth Alpha channel doc?
-    if( iDDSD.ddpfPixelFormat.dwFourCC = FOURCC_DXT1 ) then
-      iDDSData.Components := 3
+    if( ddsd.ddpfPixelFormat.dwFourCC = FOURCC_DXT1 ) then
+      ddsdata.Components := 3
     else
-      iDDSData.Components := 4;
+      ddsdata.Components := 4;
 
     glGenTextures(1, @tex_data[params[0].int][texid].tex);
     glBindTexture(GL_TEXTURE_2D, tex_data[params[0].int][texid].tex  );
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
-    if iDDSData.OutputFormat = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT then
-      iBlockSize := 8
+    if ddsdata.OutputFormat = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT then
+      blocksize := 8
     else
-      iBlockSize := 16;
+      blocksize := 16;
 
-    iHeight     := iDDSData.height;
-    iWidth      := iDDSData.width;
-    iOffset     := 0;
+    height     := ddsdata.height;
+    width      := ddsdata.width;
+    offset     := 0;
 
-    for iI := 0 to iDDSData.NumMipMaps-1 do
+    for i := 0 to ddsdata.NumMipMaps-1 do
     begin
-      if iWidth  = 0 then iWidth  := 1;
-      if iHeight = 0 then iHeight := 1;
+      if width  = 0 then width  := 1;
+      if height = 0 then height := 1;
 
-      iSize := ((iWidth+3) div 4) * ((iHeight+3) div 4) * iBlockSize;
+      size := ((width+3) div 4) * ((height+3) div 4) * blocksize;
 
       glCompressedTexImage2DARB( GL_TEXTURE_2D,
-                                 iI,
-                                 iDDSData.Outputformat,
-                                 iWidth,
-                                 iHeight,
+                                 i,
+                                 ddsdata.Outputformat,
+                                 width,
+                                 height,
                                  0,
-                                 iSize,
-                                 pointer( integer(iDDSData.data) + iOffset));
-      iOffset := iOffset  + iSize;
-      iWidth  := (iWidth  div 2);
-      iHeight := (iHeight div 2);
+                                 size,
+                                 pointer( integer(ddsdata.data) + offset));
+      offset := offset  + size;
+      width  := (width  div 2);
+      height := (height div 2);
     end;
   except
     on E: Exception do

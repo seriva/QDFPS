@@ -8,59 +8,58 @@
       <Unit0>
         <Filename Value="QDFPS.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="Console.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit1>
       <Unit2>
         <Filename Value="Editing.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit2>
       <Unit3>
         <Filename Value="Frustum.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit3>
       <Unit4>
         <Filename Value="Log.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit4>
       <Unit5>
         <Filename Value="Main.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="256"/>
+        <TopLine Value="129"/>
         <CursorPos X="133" Y="139"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="Map.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="74" Y="52"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="448"/>
+        <CursorPos X="21" Y="481"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="Physics.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit7>
       <Unit8>
         <Filename Value="Renderer.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="166"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="136"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -69,254 +68,308 @@
         <EditorIndex Value="5"/>
         <TopLine Value="58"/>
         <CursorPos X="65" Y="83"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="Textures.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="326"/>
-        <CursorPos X="89" Y="347"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="242"/>
+        <CursorPos X="35" Y="260"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="..\libs\opengl\dglOpenGL.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit11>
       <Unit12>
         <Filename Value="Scripting.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit12>
       <Unit13>
         <Filename Value="Font.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
+        <TopLine Value="82"/>
         <CursorPos X="17" Y="168"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="..\libs\sdl\jedi.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit14>
       <Unit15>
         <Filename Value="..\libs\sdl\SDL.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit15>
       <Unit16>
         <Filename Value="..\libs\sdl\sdl2.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SDL2"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit16>
       <Unit17>
         <Filename Value="..\libs\sdl\sdlblendmode.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit17>
       <Unit18>
         <Filename Value="..\libs\sdl\sdlerror.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit18>
       <Unit19>
         <Filename Value="..\libs\sdl\sdlevents.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit19>
       <Unit20>
         <Filename Value="..\libs\sdl\sdlgesture.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit20>
       <Unit21>
         <Filename Value="..\libs\sdl\sdljoystick.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit21>
       <Unit22>
         <Filename Value="..\libs\sdl\sdlkeyboard.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit22>
       <Unit23>
         <Filename Value="..\libs\sdl\sdlloadso.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit23>
       <Unit24>
         <Filename Value="..\libs\sdl\sdlmouse.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit24>
       <Unit25>
         <Filename Value="..\libs\sdl\sdlmutex.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit25>
       <Unit26>
         <Filename Value="..\libs\sdl\sdlpixels.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit26>
       <Unit27>
         <Filename Value="..\libs\sdl\sdlplatform.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit27>
       <Unit28>
         <Filename Value="..\libs\sdl\sdlpower.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit28>
       <Unit29>
         <Filename Value="..\libs\sdl\sdlrect.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit29>
       <Unit30>
         <Filename Value="..\libs\sdl\sdlrenderer.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit30>
       <Unit31>
         <Filename Value="..\libs\sdl\sdlrwops.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit31>
       <Unit32>
         <Filename Value="..\libs\sdl\sdlscancode.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit32>
       <Unit33>
         <Filename Value="..\libs\sdl\sdlshape.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit33>
       <Unit34>
         <Filename Value="..\libs\sdl\sdlsurface.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit34>
       <Unit35>
         <Filename Value="..\libs\sdl\sdlthread.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit35>
       <Unit36>
         <Filename Value="..\libs\sdl\sdltimer.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit36>
       <Unit37>
         <Filename Value="..\libs\sdl\sdltouch.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit37>
       <Unit38>
         <Filename Value="..\libs\sdl\sdltype.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit38>
       <Unit39>
         <Filename Value="..\libs\sdl\sdlversion.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit39>
       <Unit40>
         <Filename Value="..\libs\sdl\sdlvideo.inc"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit40>
       <Unit41>
         <Filename Value="Common.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit41>
       <Unit42>
         <Filename Value="Lighting.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit42>
     </Units>
-    <JumpHistory Count="17" HistoryIndex="16">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Map.pas"/>
-        <Caret Line="482" Column="34" TopLine="462"/>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="201" Column="13" TopLine="185"/>
       </Position1>
       <Position2>
-        <Filename Value="Map.pas"/>
-        <Caret Line="476" Column="48" TopLine="460"/>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="198" Column="64" TopLine="185"/>
       </Position2>
       <Position3>
         <Filename Value="Textures.pas"/>
-        <Caret Line="100" Column="9" TopLine="76"/>
+        <Caret Line="201" Column="13" TopLine="185"/>
       </Position3>
       <Position4>
         <Filename Value="Textures.pas"/>
-        <Caret Line="161" Column="7" TopLine="124"/>
+        <Caret Line="206" Column="13" TopLine="185"/>
       </Position4>
       <Position5>
         <Filename Value="Textures.pas"/>
-        <Caret Line="169" Column="7" TopLine="132"/>
+        <Caret Line="242" Column="20" TopLine="206"/>
       </Position5>
       <Position6>
         <Filename Value="Textures.pas"/>
-        <Caret Line="174" Column="27" TopLine="162"/>
+        <Caret Line="201" Column="13" TopLine="180"/>
       </Position6>
       <Position7>
         <Filename Value="Textures.pas"/>
-        <Caret Line="181" Column="40" TopLine="162"/>
+        <Caret Line="206" Column="13" TopLine="180"/>
       </Position7>
       <Position8>
         <Filename Value="Textures.pas"/>
-        <Caret Line="184" Column="29" TopLine="162"/>
+        <Caret Line="242" Column="20" TopLine="206"/>
       </Position8>
       <Position9>
         <Filename Value="Textures.pas"/>
-        <Caret Line="284" Column="34" TopLine="248"/>
+        <Caret Line="294" Column="40" TopLine="276"/>
       </Position9>
       <Position10>
         <Filename Value="Textures.pas"/>
-        <Caret Line="182" Column="44" TopLine="157"/>
+        <Caret Line="203" Column="5" TopLine="211"/>
       </Position10>
       <Position11>
         <Filename Value="Textures.pas"/>
-        <Caret Line="107" Column="8" TopLine="82"/>
+        <Caret Line="238" Column="47" TopLine="227"/>
       </Position11>
       <Position12>
         <Filename Value="Textures.pas"/>
-        <Caret Line="8" Column="5"/>
+        <Caret Line="7" Column="12"/>
       </Position12>
       <Position13>
         <Filename Value="Textures.pas"/>
-        <Caret Line="7" Column="3"/>
+        <Caret Line="195" Column="32" TopLine="174"/>
       </Position13>
       <Position14>
         <Filename Value="Textures.pas"/>
-        <Caret Line="256" TopLine="243"/>
+        <Caret Line="238" Column="17" TopLine="356"/>
       </Position14>
       <Position15>
         <Filename Value="Textures.pas"/>
-        <Caret Line="179" Column="28" TopLine="158"/>
+        <Caret Line="239" Column="34" TopLine="218"/>
       </Position15>
       <Position16>
         <Filename Value="Textures.pas"/>
-        <Caret Line="151" Column="16" TopLine="154"/>
+        <Caret Line="235" Column="48" TopLine="218"/>
       </Position16>
       <Position17>
         <Filename Value="Textures.pas"/>
-        <Caret Line="342" Column="5" TopLine="346"/>
+        <Caret Line="198" Column="27" TopLine="178"/>
       </Position17>
+      <Position18>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="162" Column="11" TopLine="144"/>
+      </Position18>
+      <Position19>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="161" Column="7" TopLine="144"/>
+      </Position19>
+      <Position20>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="216" Column="25" TopLine="180"/>
+      </Position20>
+      <Position21>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="205" Column="29" TopLine="147"/>
+      </Position21>
+      <Position22>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="163" Column="13" TopLine="148"/>
+      </Position22>
+      <Position23>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="164" Column="17" TopLine="150"/>
+      </Position23>
+      <Position24>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="165" Column="10" TopLine="155"/>
+      </Position24>
+      <Position25>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="166" Column="12" TopLine="149"/>
+      </Position25>
+      <Position26>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="167" Column="9" TopLine="156"/>
+      </Position26>
+      <Position27>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="168" Column="14" TopLine="154"/>
+      </Position27>
+      <Position28>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="169" Column="9" TopLine="152"/>
+      </Position28>
+      <Position29>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="170" Column="16" TopLine="156"/>
+      </Position29>
+      <Position30>
+        <Filename Value="Textures.pas"/>
+        <Caret Line="144" Column="5" TopLine="121"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
