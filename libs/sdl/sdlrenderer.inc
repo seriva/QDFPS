@@ -34,12 +34,14 @@ type
    *}
 type
   PSDL_TextureAccess = ^TSDL_TextureAccess;
-  TSDL_TextureAccess = (
-                        SDL_TEXTUREACCESS_STATIC,    {**< Changes rarely, not lockable *}
-                        SDL_TEXTUREACCESS_STREAMING, {**< Changes frequently, lockable *}
-                        SDL_TEXTUREACCESS_TARGET     {**< Texture can be used as a render target *}
-                        );
+  TSDL_TextureAccess = SInt32;
 
+const
+  SDL_TEXTUREACCESS_STATIC    = 0; {**< Changes rarely, not lockable *}
+  SDL_TEXTUREACCESS_STREAMING = 1; {**< Changes frequently, lockable *}
+  SDL_TEXTUREACCESS_TARGET    = 2; {**< Texture can be used as a render target *}
+
+type
   {**
    *  The texture channel modulation used in SDL_RenderCopy().
    *}
@@ -65,12 +67,14 @@ type
    *}
 
   PPSDL_Renderer = ^PSDL_Renderer;
-  PSDL_Renderer = Pointer; //todo!
+  PSDL_Renderer = ^TSDL_Renderer;
+  TSDL_Renderer = record;
 
   {**
    *  An efficient driver-specific representation of pixel data
    *}
-  PSDL_Texture = Pointer; //todo!
+  PSDL_Texture = ^TSDL_Texture;
+  TSDL_Texture = record;
 
   {* Function prototypes *}
 
@@ -654,7 +658,7 @@ function SDL_RenderCopy(renderer: PSDL_Renderer; texture: PSDL_Texture; srcrect:
    *
    *   0 on success, or -1 on error
    *}
-function SDL_RenderCopyEx(renderer: PSDL_Renderer; texture: PSDL_Texture; const srcrect: PSDL_Rect; dstrect: PSDL_Rect; angle: Double; center: PSDL_Point; flip: PSDL_RendererFlip): SInt32 cdecl; external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_RenderCopyEx' {$ENDIF} {$ENDIF};
+function SDL_RenderCopyEx(renderer: PSDL_Renderer; texture: PSDL_Texture; const srcrect: PSDL_Rect; dstrect: PSDL_Rect; angle: Double; center: PSDL_Point; flip: TSDL_RendererFlip): SInt32 cdecl; external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_RenderCopyEx' {$ENDIF} {$ENDIF};
 
   {**
    *  Read pixels from the current rendering target.
@@ -714,3 +718,24 @@ function SDL_GL_BindTexture(texture: PSDL_Texture; texw: PFloat; texh: PFloat): 
    *   0 on success, or -1 if the operation is not supported
    *}
 function SDL_GL_UnbindTexture(texture: PSDL_Texture): SInt32 cdecl; external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_GL_UnbindTexture' {$ENDIF} {$ENDIF};
+
+  {**
+   *  Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
+   *
+   *  texture   The texture to update
+   *  rect      A pointer to the rectangle of pixels to update, or NULL to update the entire texture.
+   *  Yplane    The raw pixel data for the Y plane.
+   *  Ypitch    The number of bytes between rows of pixel data for the Y plane.
+   *  Uplane    The raw pixel data for the U plane.
+   *  Upitch    The number of bytes between rows of pixel data for the U plane.
+   *  Vplane    The raw pixel data for the V plane.
+   *  Vpitch    The number of bytes between rows of pixel data for the V plane.
+   *
+   *  0 on success, or -1 if the texture is not valid.
+   *
+   *  You can use SDL_UpdateTexture() as long as your pixel data is
+   *  a contiguous block of Y and U/V planes in the proper order, but
+   *  this function is available if your pixel data is not contiguous.
+   *}
+function SDL_UpdateYUVTexture(texture: PSDL_Texture; rect: PSDL_Rect; Yplane: PUInt8; Ypitch: SInt32; Uplane: PUInt8; UPitch: SInt32; Vplane: UInt8; VPitch: SInt32):SInt32;
+   cdecl; external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_UpdateYUVTexture' {$ENDIF} {$ENDIF};
