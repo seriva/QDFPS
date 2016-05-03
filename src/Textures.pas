@@ -263,7 +263,7 @@ begin
                                  height,
                                  0,
                                  size,
-                                 pointer( integer(ddsdata.data) + offset));
+                                 @ddsdata.data[offset]);
       offset := offset  + size;
       width  := (width  div 2);
       height := (height div 2);
