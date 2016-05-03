@@ -7,13 +7,13 @@ sundir(0.8,-1.0,-0.5);
 loadskybox("sky1");
 
 {load the textures}
-loadtexture(2,"textures/egypt/ceiling.tga");
-loadtexture(2,"textures/egypt/deco.tga");
-loadtexture(2,"textures/egypt/floor.tga");
-loadtexture(2,"textures/egypt/piller.tga");
-loadtexture(2,"textures/egypt/wall.tga");
-loadtexture(2,"textures/egypt/eye-part1.tga");
-loadtexture(2,"textures/egypt/eye-part2.tga");
-loadtexture(2,"textures/egypt/eye-part3.tga");
-loadtexture(2,"textures/egypt/eye-part4.tga");
+loadtexture(2,"textures/egypt/ceiling.dds");
+loadtexture(2,"textures/egypt/deco.dds");
+loadtexture(2,"textures/egypt/floor.dds");
+loadtexture(2,"textures/egypt/piller.dds");
+loadtexture(2,"textures/egypt/wall.dds");
+loadtexture(2,"textures/egypt/eye-part1.dds");
+loadtexture(2,"textures/egypt/eye-part2.dds");
+loadtexture(2,"textures/egypt/eye-part3.dds");
+loadtexture(2,"textures/egypt/eye-part4.dds");
 

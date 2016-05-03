@@ -37,72 +37,58 @@
       <Unit0>
         <Filename Value="QDFPS.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="QDFPS"/>
       </Unit0>
       <Unit1>
         <Filename Value="Console.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Console"/>
       </Unit1>
       <Unit2>
         <Filename Value="Editing.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Editing"/>
       </Unit2>
       <Unit3>
         <Filename Value="Frustum.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Frustum"/>
       </Unit3>
       <Unit4>
         <Filename Value="Log.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Log"/>
       </Unit4>
       <Unit5>
         <Filename Value="Main.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Main"/>
       </Unit5>
       <Unit6>
         <Filename Value="Map.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Map"/>
       </Unit6>
       <Unit7>
         <Filename Value="Physics.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Physics"/>
       </Unit7>
       <Unit8>
         <Filename Value="Renderer.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Renderer"/>
       </Unit8>
       <Unit9>
         <Filename Value="Skybox.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Skybox"/>
       </Unit9>
       <Unit10>
         <Filename Value="Textures.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Textures"/>
       </Unit10>
       <Unit11>
         <Filename Value="..\libs\opengl\dglOpenGL.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="dglOpenGL"/>
       </Unit11>
       <Unit12>
         <Filename Value="Scripting.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Scripting"/>
       </Unit12>
       <Unit13>
         <Filename Value="Font.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Font"/>
       </Unit13>
       <Unit14>
         <Filename Value="..\libs\sdl\jedi.inc"/>
@@ -216,12 +202,10 @@
       <Unit41>
         <Filename Value="Common.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Common"/>
       </Unit41>
       <Unit42>
         <Filename Value="Lighting.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Lighting"/>
       </Unit42>
     </Units>
   </ProjectOptions>
@@ -236,12 +220,6 @@
       <OtherUnitFiles Value="..\libs\opengl;..\libs\imaging;..\libs\imaging\Extensions;..\libs\imaging\JpegLib;..\libs\sdl"/>
       <UnitOutputDirectory Value="..\build"/>
     </SearchPaths>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="4">

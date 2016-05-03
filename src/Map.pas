@@ -455,7 +455,7 @@ end;
 procedure LoadMap(const pars : TParams);
 var
   dir       : String;
-  data      : TFileStream;
+  data      : TMemoryStream;
   header    : TMapHeader;
   i         : integer;
   blocks    : array of TBlock;
@@ -473,7 +473,8 @@ begin
       raise Exception.Create('Map data file does not exist!');
 
     //load the map binary data
-    data := TFileStream.Create(dir + MAP_DATA, fmOpenRead);
+    data := TMemoryStream.Create();
+    data.LoadFromFile(dir + MAP_DATA);
     data.Read(header, SizeOf(TMapHeader));
     SetLength(blocks, header.blockcount);
     StartProgress('Loading map...', header.blockcount + 20);
