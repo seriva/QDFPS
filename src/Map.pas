@@ -482,11 +482,11 @@ begin
     ClearMap(header.mapsize);
     for i := 0 to header.blockcount-1 do
     begin
-      UpdateProgress(1);
       new(map_blocks[blocks[i].p.x, blocks[i].p.y, blocks[i].p.z]);
       Move(blocks[i], map_blocks[blocks[i].p.x, blocks[i].p.y, blocks[i].p.z]^, SizeOf(TBlock));
     end;
     FreeAndNil(data);
+    UpdateProgress(header.blockcount);
 
     //execute the map script
     ExecuteScript(Params([P(MAP_BASE + pars[0].str + '/' + MAP_SCRIPT)]));

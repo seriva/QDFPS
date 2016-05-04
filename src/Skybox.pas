@@ -22,12 +22,12 @@ uses
 
 const
   SKY_BASE      = 'skyboxes/';
-  FRONT_TEX     = 'front.dds';
-  BACK_TEX      = 'back.dds';
-  TOP_TEX       = 'top.dds';
-  BOTTOM_TEX    = 'bottom.dds';
-  LEFT_TEX      = 'left.dds';
-  RIGHT_TEX     = 'right.dds';
+  FRONT_TEX     = 'front.tga';
+  BACK_TEX      = 'back.tga';
+  TOP_TEX       = 'top.tga';
+  BOTTOM_TEX    = 'bottom.tga';
+  LEFT_TEX      = 'left.tga';
+  RIGHT_TEX     = 'right.tga';
 
 var
   sky_has_dpl : boolean = false;
