@@ -17,40 +17,6 @@ var
 
 implementation
 
-const
-  VERTL : array[1..6, 1..4, 1..3] of single =
-  (
-    ((0.001,0.001,0.999),
-     (0.999,0.001,0.999),
-     (0.999,0.999,0.999),
-     (0.001,0.999,0.999)),
-
-    ((0.001,0.001,0.001),
-     (0.001,0.999,0.001),
-     (0.999,0.999,0.001),
-     (0.999,0.001,0.001)),
-
-    ((0.001,0.999,0.001),
-     (0.001,0.999,0.999),
-     (0.999,0.999,0.999),
-     (0.999,0.999,0.001)),
-
-    ((0.001,0.001,0.001),
-     (0.999,0.001,0.001),
-     (0.999,0.001,0.999),
-     (0.001,0.001,0.999)),
-
-    ((0.999,0.001,0.001),
-     (0.999,0.999,0.001),
-     (0.999,0.999,0.999),
-     (0.999,0.001,0.999)),
-
-    ((0.001,0.001,0.001),
-     (0.001,0.001,0.999),
-     (0.001,0.999,0.999),
-     (0.001,0.999,0.001))
-  );
-
 procedure CalcLighting();
 var
   i, j, x, y, z : integer;
@@ -97,22 +63,8 @@ begin
         begin
           for i := 1 to 6 do
           begin
-            if (GetBlock( VeciAdd(Veci(x, y, z), Veci(Round(NORM[i][1]), Round(NORM[i][2]), Round(NORM[i][3]))) ) = nil) and st[i] then
-            begin
-              for j := 1 to 4 do
-              begin
-                //calculate raycast position with little ofsett for this side.
-                p := VecfAdd(Vecf(VERTL[i][j][1]+x, VERTL[i][j][2]+y, VERTL[i][j][3]+z), VecfMul(Vecf(NORM[i][1], NORM[i][2], NORM[i][3]), Vecf(0.01, 0.01, 0.01)));
-                ci := RayCast(p, il, 512);
-                if ci.collided then
-                  bp^.col[i][j] := Color(l_mapambient)
-                else
-                  bp^.col[i][j] := Color(col[i]);
-              end;
-            end
-            else
-              for j := 1 to 4 do
-                bp^.col[i][j] := Color(col[i]);
+            for j := 1 to 4 do
+              bp^.col[i] := Color(col[i]);
           end;
         end;
       end;

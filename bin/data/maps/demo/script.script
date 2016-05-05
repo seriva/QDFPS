@@ -1,5 +1,5 @@
 {set general lighting parameters}
-mapambient(100,100,100);
+mapambient(150,150,150);
 sundiffuse(255,255,255);
 sundir(0.8,-1.0,-0.5);
 

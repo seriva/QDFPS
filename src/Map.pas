@@ -27,7 +27,7 @@ type
     blocktype : TBlockType;
     tex : array[1..6] of byte;
     uv  : array[1..6] of byte;
-    col : array[1..6, 1..4] of TColor;
+    col : array[1..6] of TColor;
     p : TVecb;
   end;
 
@@ -231,17 +231,15 @@ begin
         begin
           with vis_faces[x][y] do
           begin
+            //color
+            c := map_blocks[p.x, p.y, p.z]^.col[side]; glColor3ub(c.r, c.g, c.b);
             //v1
-            c := map_blocks[p.x, p.y, p.z]^.col[side][1]; glColor3ub(c.r, c.g, c.b);
             glTexCoord2fv(@UV[side][rot][1]); glVertex3f( VERT[side][1][1]+p.x,  VERT[side][1][2]+p.y,  VERT[side][1][3]+p.z);
             //v2
-            c := map_blocks[p.x, p.y, p.z]^.col[side][2]; glColor3ub(c.r, c.g, c.b);
             glTexCoord2fv(@UV[side][rot][3]); glVertex3f( VERT[side][2][1]+p.x,  VERT[side][2][2]+p.y,  VERT[side][2][3]+p.z);
             //v3
-            c := map_blocks[p.x, p.y, p.z]^.col[side][3]; glColor3ub(c.r, c.g, c.b);
             glTexCoord2fv(@UV[side][rot][5]); glVertex3f( VERT[side][3][1]+p.x,  VERT[side][3][2]+p.y,  VERT[side][3][3]+p.z);
             //v4
-            c := map_blocks[p.x, p.y, p.z]^.col[side][4]; glColor3ub(c.r, c.g, c.b);
             glTexCoord2fv(@UV[side][rot][7]); glVertex3f( VERT[side][4][1]+p.x,  VERT[side][4][2]+p.y,  VERT[side][4][3]+p.z);
           end;
         end;
@@ -658,7 +656,7 @@ begin
     map_blocks[p.x, p.y, p.z]^.tex[i] := tex;
     map_blocks[p.x, p.y, p.z]^.uv[i]  := 1;
     for j := 1 to 4 do
-      map_blocks[p.x, p.y, p.z]^.col[i][j] := Color(255,255,255);
+      map_blocks[p.x, p.y, p.z]^.col[i] := Color(255,255,255);
   end;
   if updatenodes then UpdateBlockNode(p, true);
 end;
