@@ -7,6 +7,7 @@ uses
   Common,
   Map,
   Physics,
+  Frustum,
   Renderer,
   Scripting;
 
@@ -26,13 +27,18 @@ var
   dot : Single;
   bp  : PBlock;
   ci  : TCollisionInfo;
+  sm  : array of array of integer;
 begin
   il := VecfInv(VecfNorm(l_sundir));
 
   //start calculating lighting
-  StartProgress('Calculating lighting...', (map_size) + 10);
+  StartProgress('Calculating lighting...', 3);
 
-  //preprocess most expensive calculations for a single cube
+  //---------------------------
+  // Directional light
+  //---------------------------
+
+  //calulate directional light for each cubeside
   for i := 1 to 6 do
   begin
     dot := Max(0, VecfDot(il, Vecf(NORM[i][1], NORM[i][2], NORM[i][3])));
@@ -49,28 +55,49 @@ begin
       st[i]  := false;
     end;
   end;
-  UpdateProgress(10);
+  UpdateProgress(1);
 
-  //now for each cube.
+  //apply to all cubes and calculate shadowmap
+  setLength(sm, map_size, map_size);
   for x := 0 to map_size-1 do
   begin
-    for y := 0 to map_size-1 do
+    for z := 0 to map_size-1 do
     begin
-      for z := 0 to map_size-1 do
+      sm[x, z] := -1;
+      for y := 0 to map_size-1 do
       begin
         bp := GetBlock(Veci(x, y, z));
         if (bp <> nil) and (bp^.blocktype = BT_SOLID) then
         begin
           for i := 1 to 6 do
           begin
-            for j := 1 to 4 do
-              bp^.col[i] := Color(col[i]);
+            bp^.col[i] := Color(col[i]);
           end;
+          if y > sm[x, z] then
+            sm[x, z] := y;
         end;
       end;
     end;
-    UpdateProgress(1);
   end;
+  UpdateProgress(1);
+
+  //apply the shadowmap
+  for x := 0 to map_size-1 do
+  begin
+    for z := 0 to map_size-1 do
+    begin
+      for y := 0 to map_size-1 do
+      begin
+        bp := GetBlock(Veci(x, y, z));
+        if (bp <> nil) and (bp^.blocktype = BT_SOLID) then
+        begin
+         if y < sm[x, z] then
+           bp^.col[TOP] := l_mapambient;
+        end;
+      end;
+    end;
+  end;
+  UpdateProgress(1);
 
   InitMap();
   EndProgress();

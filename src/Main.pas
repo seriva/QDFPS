@@ -118,12 +118,12 @@ begin
     SDL_SCANCODE_2      : editmode := EM_TEXTURING;
   end;
   ControlConsole(keysym.scancode);
-  keystate[keysym.sym] := 1;
+  if keysym.sym < 255 then keystate[keysym.sym] := 1;
 end;
 
 procedure HandleKeyUp( keysym : TSDL_keysym );
 begin;
-  keystate[keysym.sym] := 0;
+  if keysym.sym < 255 then keystate[keysym.sym] := 0;
 end;
 
 procedure HandleMouse(event : TSDL_MouseMotionEvent);
