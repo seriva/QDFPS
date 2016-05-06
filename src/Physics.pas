@@ -22,7 +22,6 @@ implementation
 
 uses
   Frustum,
-  Math,
   Main,
   Map;
 
