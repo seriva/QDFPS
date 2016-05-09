@@ -1,6 +1,7 @@
 {set general lighting parameters}
-mapambient(160,160,160);
+mapambient(150,150,150);
 sundiffuse(225,225,225);
+falloff(205,205,205);
 sundir(0.8,-1.0,-0.5);
 
 {load a skybox}

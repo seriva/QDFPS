@@ -532,6 +532,10 @@ begin
   script.Add('sundiffuse(' + IntToStr(l_sundiffuse.r) + ','
                            + IntToStr(l_sundiffuse.g) + ','
                            + IntToStr(l_sundiffuse.b) + ');');
+  script.Add('falloff(' + IntToStr(l_falloff.r) + ','
+                        + IntToStr(l_falloff.g) + ','
+                        + IntToStr(l_falloff.b) + ');');
+
   script.Add('sundir('  + FormatFloat('0.0',l_sundir.x) + ','
                         + FormatFloat('0.0',l_sundir.y) + ','
                         + FormatFloat('0.0',l_sundir.z) + ');');
