@@ -446,7 +446,7 @@ begin
         for j := 0 to length(script_coms[i].params)-1 do
         begin
           if f then f := not(f) else com := com + ', ';
-          com := com + TypeToStr(script_coms[i].v.vartype)
+          com := com + TypeToStr(script_coms[i].params[j].paramtype)
         end;
         com := com + ')';
         vp.Add( com );
